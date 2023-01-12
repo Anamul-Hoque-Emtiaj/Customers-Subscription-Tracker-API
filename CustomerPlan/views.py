@@ -47,9 +47,10 @@ class RegisterView(generics.GenericAPIView):
 
 
 class CustomerView(generics.GenericAPIView):
-
+    permission_classes=[IsAdminUser]
     queryset = CustomerModel.objects.all()
     serializer_class = CustomerSerializer
+    
     @swagger_auto_schema(operation_summary="Get all customers info")
     def get(self, request):
         customer =  CustomerModel.objects.all()
@@ -58,8 +59,10 @@ class CustomerView(generics.GenericAPIView):
         return Response(data=serializer.data , status=status.HTTP_200_OK)
 
 class CustomerIDView(generics.GenericAPIView):
+    permission_classes=[IsAdminUser]
     queryset = CustomerModel.objects.all()
     serializer_class = CustomerSerializer
+
     @swagger_auto_schema(operation_summary="Get a customer info by its ID")
     def get(self, request,customer_id):
         customer = get_object_or_404(CustomerModel,pk=customer_id)
