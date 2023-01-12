@@ -6,7 +6,7 @@ class PlanModel(models.Model):
         ('MONTHLY','Monthly'),
         ('YEARLY','Yearly')
     )
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     price = models.DecimalField(max_digits=7,decimal_places=2)
     planDuration = models.CharField(max_length=7,choices=duration)
 
