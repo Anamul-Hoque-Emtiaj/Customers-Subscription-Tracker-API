@@ -15,17 +15,17 @@ Django app to track enterprise customers who pay a monthly subscription for a ph
   <li>Clone repository or download zip file.
 
   ```
-  git clone https://github.com/Anamul-Hoque-Emtiaj/Customers-Subscription-Tracker-API.git ;
+  git clone https://github.com/Anamul-Hoque-Emtiaj/Customers-Subscription-Tracker-API.git 
 
   ```
   <li> Run CMD in project's base folder. Then run
 
 ```
-cd venv/Scripts;
-activate;
-cd ../../;
-python manage.py runserver;
+cd venv/Scripts
+activate
+cd ../../
+python manage.py runserver
 
 ```
-<li> [API Documentation](http://127.0.0.1:8000/docs/)
+<li> [API Documentation](http://127.0.0.1:8000/docs/)</li>
 </ul>
