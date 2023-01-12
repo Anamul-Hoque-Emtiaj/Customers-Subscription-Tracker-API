@@ -33,9 +33,9 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = CustomerModel 
         fields = '__all__'
 
-class PurchaseSerializer(serializers.Serializer):
+class PurchasePlanSerializer(serializers.Serializer):
     planId = serializers.IntegerField()
-    phoneNumber = serializers.CharField(max_length=30)
+    phoneNumber = serializers.CharField(max_length=15)
 
     def validate(self,data):
         isID = PlanModel.objects.get(pk=data.get('planId'))

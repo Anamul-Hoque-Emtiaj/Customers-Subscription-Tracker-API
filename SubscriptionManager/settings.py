@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'CustomerPlan.apps.CustomerplanConfig',
     'rest_framework',
     "sequences.apps.SequencesConfig",
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
