@@ -16,16 +16,20 @@ class PlanModel(models.Model):
 class CustomerModel(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
-    phoneNumber = models.CharField(max_length=15, unique=True)
-    
     def __str__(self):
-        return f"Name {self.name}, Phone Number {self.phoneNumber}"
+        return f"Name: {self.name}"
+
+class PhoneNumberModel(models.Model):
+    customer = models.ForeignKey(CustomerModel, on_delete=models.CASCADE, related_name='phoneNumber')
+    phoneNumber = models.CharField(max_length=15, unique=True)
+    def __str__(self):
+        return f"{self.phoneNumber}"
 
 class PurchaseModel(models.Model):
-    customer = models.OneToOneField(CustomerModel, on_delete=models.CASCADE)
+    customer = models.OneToOneField(CustomerModel, on_delete=models.CASCADE, related_name='plan')
     plan = models.ForeignKey(PlanModel, on_delete=models.SET_NULL,null=True)
-    purchaseTime = models.DateTimeField()
-    planExpireDate = models.DateTimeField()
+    purchaseTime = models.DateTimeField(null=True)
+    planExpireDate = models.DateTimeField(null=True)
 
     def __str__(self):
         return f"Customer {self.customer} purchase Plan {self.plan}. Expired at {self.planExpireDate}"

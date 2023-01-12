@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomerModel,PlanModel,PurchaseModel
+from .models import CustomerModel,PlanModel,PurchaseModel,PhoneNumberModel
 
 class PlanSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=30)
@@ -11,18 +11,22 @@ class PlanSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PurchaseSerializer(serializers.ModelSerializer):
-    purchaseTime = serializers.DateTimeField()
-    planExpireDate = serializers.DateTimeField()
-
+    plan = PlanSerializer(read_only=True)
     class Meta:
         model = PurchaseModel 
         fields = ['plan','purchaseTime','planExpireDate']
 
+class PhoneNumberSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PhoneNumberModel 
+        fields = ['phoneNumber']
+
 class CustomerSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=30)
     email = serializers.EmailField()
-    phoneNumber = serializers.CharField(max_length=15)
     plan = PurchaseSerializer(read_only=True)
+    phoneNumber = PhoneNumberSerializer(many=True, read_only=True)
     class Meta:
         model = CustomerModel 
         fields = '__all__'
