@@ -29,3 +29,10 @@ python manage.py runserver
 ```
 <li> [API Documentation](http://127.0.0.1:8000/docs/)</li>
 </ul>
+
+## Admin Login Info:
+<ul>
+<li>username: admin </li>
+<li>email: admin@example.com </li>
+<li>password: password123 </li>
+</ul>
